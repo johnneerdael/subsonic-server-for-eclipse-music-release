@@ -2,7 +2,7 @@
 
 A Subsonic 1.16.1 / OpenSubsonic server for Eclipse Music accounts, distributed as
 a container image. **No source code is included in this repository or in the
-image**; the image contains a minified server bundle.
+image**; the image contains an obfuscated, minified server bundle.
 
 - Image: `ghcr.io/johnneerdael/subsonic-server-for-eclipse-music:latest`
 - Platforms: `linux/amd64`, `linux/arm64`
@@ -35,11 +35,13 @@ the right client address.
 ## What the image contains
 
 - Node 22, ffmpeg, tini
-- `/app/dist/server.mjs` — the minified bundle
+- `/app/dist/server.mjs` — the obfuscated, minified bundle
 - no source tree, no build tools, no tests
 
-The bundle is a speed bump for casual inspection, not a secret store: endpoint
-paths and quality strings remain discoverable at runtime. The Eclipse account
+The bundle uses string-array/RC4 and control-flow obfuscation, so plain `grep`
+does not reveal the endpoint strings. It is still a speed bump, not a secret
+store: the strings are decoded at runtime and can be recovered by dynamic
+analysis. Packet captures remain possible. The Eclipse account
 token lives in `/data` and must be protected.
 
 ## Credentials
