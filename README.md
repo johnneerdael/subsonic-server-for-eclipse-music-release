@@ -1,3 +1,7 @@
+> **Superseded:** the public distribution repository is now
+> <https://github.com/johnneerdael/opensubsonic_eclipse_music>.
+> The image moved to `ghcr.io/johnneerdael/opensubsonic_eclipse_music`.
+
 # Eclipse Subsonic — container distribution
 
 A Subsonic 1.16.1 / OpenSubsonic server for Eclipse Music accounts, distributed as
