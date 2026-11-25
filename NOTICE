@@ -1,0 +1,4 @@
+This repository distributes a container image only. It does not contain the
+server source code. The image is provided as-is; use of Eclipse Music remains
+subject to Eclipse's own terms. The minified bundle is not a confidentiality
+mechanism: protocol details are still observable at runtime.

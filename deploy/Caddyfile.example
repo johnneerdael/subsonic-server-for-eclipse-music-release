@@ -1,0 +1,26 @@
+music.example.com {
+	encode zstd gzip
+
+	@allowed path /api/* /admin*
+	handle @allowed {
+		request_body {
+			max_size 2MB
+		}
+		reverse_proxy 127.0.0.1:4533 {
+			flush_interval -1
+			transport http {
+				read_timeout 0
+				write_timeout 0
+			}
+		}
+	}
+
+	handle {
+		respond "Not found" 404
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		-Server
+	}
+}
